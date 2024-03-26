@@ -25,10 +25,9 @@ jobs:
     - name: Push Docker image to Docker Hub
       run: docker push najmamoha1/my-nginx-app:latest
       
-    - name: Deploy Docker container using Docker API
+    - name: Deploy Docker container to Docker hosting environment
       run: |
-        curl -X POST \
-          --unix-socket /var/run/docker.sock \
-          -H "Content-Type: application/json" \
-          -d '{"Image": "najmamoha1/my-nginx-app:latest", "PortBindings": { "80/tcp": [{ "HostPort": "80" }] }}' \
-          http:/v1.41/containers/create
+        # Use Docker commands or Docker API to deploy the container
+        # Replace the following commands with your deployment strategy
+        docker pull najmamoha1/my-nginx-app:latest
+        docker run -d --name my-nginx-container -p 80:80 najmamoha1/my-nginx-app:latest
